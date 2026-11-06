@@ -1,0 +1,23 @@
+{
+	"name": "ls_azuresqldb",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "kaleidahealthserver.database.windows.net",
+			"database": "kaleidahealthsqldb",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "varhadpande",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqldbpw"
+			}
+		}
+	}
+}
