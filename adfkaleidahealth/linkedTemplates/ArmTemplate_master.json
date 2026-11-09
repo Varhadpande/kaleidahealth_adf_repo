@@ -11,6 +11,10 @@
 			"type": "string",
 			"defaultValue": "https://kaleidahealthkv.vault.azure.net/"
 		},
+		"ls_AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "1106-192357-9xwrk7ls"
+		},
 		"ls_adls_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://kaleidahealthstorage.dfs.core.windows.net/"
@@ -38,10 +42,6 @@
 		"ls_postgresql_properties_typeProperties_username": {
 			"type": "string",
 			"defaultValue": "neondb_owner"
-		},
-		"ls_AzureDatabricks_properties_typeProperties_existingClusterId": {
-			"type": "string",
-			"defaultValue": "1106-192357-9xwrk7ls"
 		},
 		"containerUri": {
 			"type": "string",
@@ -76,6 +76,9 @@
 					"ls_adls_properties_typeProperties_url": {
 						"value": "[parameters('ls_adls_properties_typeProperties_url')]"
 					},
+					"ls_AzureDatabricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_AzureDatabricks_properties_typeProperties_existingClusterId')]"
+					},
 					"ls_azuresqldb_properties_typeProperties_server": {
 						"value": "[parameters('ls_azuresqldb_properties_typeProperties_server')]"
 					},
@@ -93,9 +96,6 @@
 					},
 					"ls_postgresql_properties_typeProperties_username": {
 						"value": "[parameters('ls_postgresql_properties_typeProperties_username')]"
-					},
-					"ls_AzureDatabricks_properties_typeProperties_existingClusterId": {
-						"value": "[parameters('ls_AzureDatabricks_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},
