@@ -439,6 +439,10 @@
 											"referenceName": "ds_csv_binary",
 											"type": "DatasetReference",
 											"parameters": {
+												"folder": {
+													"value": "@concat(\n    activity('read table details').output.firstRow.source_system,\n    '/',\n    activity('read table details').output.firstRow.source_table_name,\n    '/',\n    variables('start_time')\n)",
+													"type": "Expression"
+												},
 												"container": "landing"
 											}
 										}
