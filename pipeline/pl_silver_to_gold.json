@@ -82,7 +82,14 @@
 						{
 							"name": "update failed status",
 							"type": "Script",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "silver to gold",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 2,
@@ -106,6 +113,51 @@
 									}
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "silver to gold",
+							"type": "DatabricksNotebook",
+							"dependsOn": [
+								{
+									"activity": "insert IN PROGRESS status",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"notebookPath": "/kaleidahealth-repo/kaleidahealth_dbx_repo/landing_to_bronze",
+								"baseParameters": {
+									"source_system": {
+										"value": "@activity('read table details').output.firstRow.source_system",
+										"type": "Expression"
+									},
+									"table_name": {
+										"value": "@activity('read table details').output.firstRow.bronze_table_name",
+										"type": "Expression"
+									},
+									"landing_timestamp": {
+										"value": "@variables('start_time')",
+										"type": "Expression"
+									},
+									"source_file_format": {
+										"value": "@coalesce(activity('read table details').output.firstRow.source_file_format, '')",
+										"type": "Expression"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "ls_AzureDatabricks",
+								"type": "LinkedServiceReference"
 							}
 						}
 					]
