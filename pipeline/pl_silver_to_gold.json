@@ -135,24 +135,9 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"notebookPath": "/kaleidahealth-repo/kaleidahealth_dbx_repo/landing_to_bronze",
-								"baseParameters": {
-									"source_system": {
-										"value": "@activity('read table details').output.firstRow.source_system",
-										"type": "Expression"
-									},
-									"table_name": {
-										"value": "@activity('read table details').output.firstRow.bronze_table_name",
-										"type": "Expression"
-									},
-									"landing_timestamp": {
-										"value": "@variables('start_time')",
-										"type": "Expression"
-									},
-									"source_file_format": {
-										"value": "@coalesce(activity('read table details').output.firstRow.source_file_format, '')",
-										"type": "Expression"
-									}
+								"notebookPath": {
+									"value": "/kaleidahealth-repo/kaleidahealth_dbx_repo/gold/NB_@{item().gold_table_name}",
+									"type": "Expression"
 								}
 							},
 							"linkedServiceName": {
