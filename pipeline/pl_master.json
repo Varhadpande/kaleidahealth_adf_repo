@@ -1,6 +1,20 @@
 {
 	"name": "pl_master",
 	"properties": {
+		"activities": [
+			{
+				"name": "source to silver postgres",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			}
+		],
 		"annotations": []
 	}
 }
